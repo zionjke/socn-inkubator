@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Grid, makeStyles} from "@material-ui/core";
 import {Header} from "../components/Header";
 import {Menu} from "../components/Menu";
+import { Profile } from './Profile';
 
 type Props = {
 
@@ -25,9 +26,7 @@ export const Home = (props: Props) => {
                    <Menu/>
                 </Grid>
                 <Grid item xs={8}>
-                    <div>
-                        Main content
-                    </div>
+                    <Profile/>
                 </Grid>
             </Grid>
         </div>
