@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Grid, makeStyles} from "@material-ui/core";
+import {Grid, makeStyles, Paper} from "@material-ui/core";
 import {Header} from "../components/Header";
 import {Menu} from "../components/Menu";
 import { Profile } from './Profile';
@@ -23,10 +23,14 @@ export const Home = (props: Props) => {
                     <Header/>
                 </Grid>
                 <Grid item xs={4}>
-                   <Menu/>
+                    <Paper elevation={2}>
+                        <Menu/>
+                    </Paper>
                 </Grid>
                 <Grid item xs={8}>
-                    <Profile/>
+                    <Paper elevation={2}>
+                        <Profile/>
+                    </Paper>
                 </Grid>
             </Grid>
         </div>

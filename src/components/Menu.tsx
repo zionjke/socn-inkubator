@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
     },
-
     menuIcon: {
         marginRight: 10
     }
