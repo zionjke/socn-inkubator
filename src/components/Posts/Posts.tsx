@@ -1,4 +1,3 @@
-
 import {Button, makeStyles, TextField, Typography} from '@material-ui/core';
 import * as React from 'react';
 import {Post} from "./Post";
@@ -34,13 +33,13 @@ export const Posts = (props: Props) => {
                 Мои публикации
             </Typography>
             <div className={classes.form}>
-                <TextField className={classes.formTextField}  id="outlined-basic" label="Введите текст" variant="outlined" />
+                <TextField  className={classes.formTextField}  id="outlined-basic" label="Введите текст" variant="outlined" />
                 <Button className={classes.formButton} variant="contained" color="primary">
                     Опубликовать
                 </Button>
             </div>
-            <Post/>
-            <Post/>
+            <Post likeCount={5} message={'Its my first post'}/>
+            <Post likeCount={8} message={'Its my second post'}/>
         </div>
     );
 };
