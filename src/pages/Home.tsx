@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {Grid, makeStyles, Paper} from "@material-ui/core";
+import {Dialog, Grid, makeStyles, Paper} from "@material-ui/core";
 import {Header} from "../components/Header";
 import {Menu} from "../components/Menu";
 import { Profile } from './Profile';
+import { Route } from 'react-router-dom';
+import {Dialogs} from "./Dialogs";
 
 type Props = {
 
@@ -18,7 +20,7 @@ export const Home = (props: Props) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Header/>
                 </Grid>
@@ -29,7 +31,8 @@ export const Home = (props: Props) => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper elevation={2}>
-                        <Profile/>
+                        <Route exact path='/profile' component={Profile}/>
+                        <Route path='/dialogs' component={Dialogs}/>
                     </Paper>
                 </Grid>
             </Grid>

@@ -6,7 +6,7 @@ import LikeIcon from '@material-ui/icons/ThumbUpAltOutlined';
 
 type Props = {
     message: string,
-    likeCount:number
+    likeCount: number
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     postText: {
         marginTop: 5,
-        marginLeft:15
+        marginLeft: 15
     },
     postLikeIcon: {
         width: 25,
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export const Post = ({message,likeCount}: Props) => {
+export const Post = ({message, likeCount}: Props) => {
     const classes = useStyles();
     return (
         <div className={classes.post}>
@@ -37,7 +37,7 @@ export const Post = ({message,likeCount}: Props) => {
             <div>
                 <Typography variant='body1' className={classes.postText}>{message}</Typography>
                 <IconButton aria-label="like">
-                    <Badge  badgeContent={likeCount} color="secondary">
+                    <Badge badgeContent={likeCount} color="secondary">
                         <LikeIcon className={classes.postLikeIcon}/>
                     </Badge>
                 </IconButton>

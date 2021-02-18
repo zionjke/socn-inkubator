@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     form: {
         display: 'flex',
         marginTop: 25,
+        marginBottom: 45
     },
 
     formTextField: {
@@ -38,7 +39,7 @@ export const Posts = (props: Props) => {
                     Опубликовать
                 </Button>
             </div>
-            <Post likeCount={5} message={'Its my first post'}/>
+            <Post likeCount={0} message={'Its my first post'}/>
             <Post likeCount={8} message={'Its my second post'}/>
         </div>
     );

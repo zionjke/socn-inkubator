@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {AppBar, IconButton, makeStyles, Toolbar,} from "@material-ui/core";
 import HeaderIcon from '@material-ui/icons/Reddit';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,9 +25,11 @@ export const Header = (props: Props) => {
         <div className=''>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <HeaderIcon className={classes.menuIcon}/>
-                    </IconButton>
+                    <Link to={'/'}>
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                            <HeaderIcon className={classes.menuIcon}/>
+                        </IconButton>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </div>
