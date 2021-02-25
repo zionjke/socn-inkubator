@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export const Dialog = ({userName,avatarLink,id}: Props) => {
+export const Dialog:React.FC<Props> = ({userName,avatarLink,id}) => {
     const classes = useStyles()
     return (
         <Link to={`/dialogs/${id}`}>
