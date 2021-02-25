@@ -6,7 +6,7 @@ import {Message} from "../components/Message";
 
 type Props = {};
 
-const dialogsData = [
+const dialogs = [
     {
         id: 1,
         userName: 'John',
@@ -29,7 +29,7 @@ const dialogsData = [
     },
 ]
 
-const messageData = [
+const messages = [
     {id: 1, message: 'Hi'},
     {id: 2, message: 'How are you'},
     {id: 3, message: 'Im fine'},
@@ -57,7 +57,7 @@ export const Dialogs:React.FC<Props> = () => {
             <Grid container spacing={2}>
                 <Grid className={classes.dialogsUsers} item xs={3}>
                     {
-                        dialogsData.map(dialog => (
+                        dialogs.map(dialog => (
                             <Dialog key={dialog.id}
                                     userName={dialog.userName}
                                     avatarLink={dialog.avatarLink}
@@ -67,7 +67,7 @@ export const Dialogs:React.FC<Props> = () => {
                 </Grid>
                 <Grid item xs={9}>
                     {
-                        messageData.map(m => (
+                        messages.map(m => (
                             <Message key={m.id}
                                      id={m.id}
                                      message={m.message}/>
