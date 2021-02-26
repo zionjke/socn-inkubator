@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import {AppBar, IconButton, makeStyles, Toolbar,} from "@material-ui/core";
 import HeaderIcon from '@material-ui/icons/Reddit';

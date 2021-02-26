@@ -1,13 +1,16 @@
 import * as React from 'react';
-import {Dialog, Grid, makeStyles, Paper} from "@material-ui/core";
+import { Grid, makeStyles, Paper} from "@material-ui/core";
 import {Header} from "../components/Header";
 import {Menu} from "../components/Menu";
-import { Profile } from './Profile';
-import { Route } from 'react-router-dom';
+import {Profile} from './Profile';
+import {Route} from 'react-router-dom';
 import {Dialogs} from "./Dialogs";
+import {DialogType, MessageType, PostType} from "../types/types";
 
 type Props = {
-
+    posts: Array<PostType>
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Home = (props: Props) => {
+export const Home: React.FC<Props> = ({posts, dialogs, messages}) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -31,8 +34,8 @@ export const Home = (props: Props) => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper elevation={2}>
-                        <Route exact path='/profile' component={Profile}/>
-                        <Route path='/dialogs' component={Dialogs}/>
+                        <Route exact path='/profile' render={() => <Profile posts={posts}/>}/>
+                        <Route path='/dialogs' render={() => <Dialogs messages={messages} dialogs={dialogs}/>}/>
                     </Paper>
                 </Grid>
             </Grid>

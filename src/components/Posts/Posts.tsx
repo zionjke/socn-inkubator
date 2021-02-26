@@ -1,13 +1,13 @@
 import {Button, makeStyles, TextField, Typography} from '@material-ui/core';
 import * as React from 'react';
 import {Post} from "./Post";
+import {PostType} from "../../types/types";
 
-type Props = {};
+type Props = {
+    posts: Array<PostType>
+};
 
-const postsData = [
-    {id: 1, likesCount: 0, message: 'Its my first post'},
-    {id: 2, likesCount: 7, message: 'Its my second post'},
-]
+
 
 const useStyles = makeStyles((theme) => ({
     myPosts: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Posts = (props: Props) => {
+export const Posts:React.FC<Props> = ({posts}) => {
     const classes = useStyles();
     return (
         <div className={classes.myPosts}>
@@ -44,7 +44,7 @@ export const Posts = (props: Props) => {
                 </Button>
             </div>
             {
-                postsData.map(post => (
+                posts.map((post) => (
                     <Post key={post.id}
                           message={post.message}
                           likesCount={post.likesCount}/>

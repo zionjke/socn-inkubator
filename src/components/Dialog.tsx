@@ -38,3 +38,8 @@ export const Dialog:React.FC<Props> = ({userName,avatarLink,id}) => {
         </Link>
     );
 };
+
+{
+
+
+}

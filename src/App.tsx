@@ -1,14 +1,20 @@
 import React from 'react';
-import {Route, Switch } from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import {Home} from "./pages/Home";
+import {DialogType, MessageType, PostType, StateType} from "./types/types";
 
 
-const App = () => {
+type Props = {
+    state: StateType
+}
+
+const App: React.FC<Props> = ({state}) => {
     return (
         <div className="App">
             <Switch>
-                <Route path={'/'} component={Home}/>
+                <Route path={'/'}
+                       render={() => <Home posts={state.posts} dialogs={state.dialogs} messages={state.messages}/>}/>
             </Switch>
         </div>
     );
