@@ -2,11 +2,12 @@ import {createStyles, makeStyles} from '@material-ui/core';
 import * as React from 'react';
 import {Posts} from "../components/Posts/Posts";
 import {ProfileInfo} from "../components/ProfileInfo";
-import {PostType} from "../types/types";
+import { ProfilePageType } from '../types/types';
+
 
 
 type Props = {
-    posts: Array<PostType>
+    state:ProfilePageType
 };
 
 
@@ -36,8 +37,8 @@ const useStyles = makeStyles((theme) =>
     }),
 );
 
-export const Profile:React.FC<Props> = ({posts}) => {
-
+export const Profile:React.FC<Props> = ({state}) => {
+    const {posts} = state
     const classes = useStyles();
     return (
         <div className={classes.profile}>

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const Menu = (props: Props) => {
+export const Menu:React.FC<Props> = () => {
     const classes = useStyles();
     const [selectedLink, setSelectedLink] = React.useState<'profile' | 'messages'>()
     return (

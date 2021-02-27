@@ -3,13 +3,12 @@ import {makeStyles} from '@material-ui/core';
 import * as React from 'react';
 import {Dialog} from "../components/Dialog";
 import {Message} from "../components/Message";
-import {DialogType, MessageType} from "../types/types";
+import {MessagesPageType} from '../types/types';
+
 
 type Props = {
-    dialogs:Array<DialogType>
-    messages:Array<MessageType>
+    state: MessagesPageType
 };
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Dialogs:React.FC<Props> = ({dialogs,messages}) => {
+export const Dialogs: React.FC<Props> = ({state}) => {
+    const {dialogs, messages} = state
     const classes = useStyles()
     return (
         <div className={classes.dialogs}>

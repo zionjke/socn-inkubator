@@ -5,12 +5,10 @@ import {Menu} from "../components/Menu";
 import {Profile} from './Profile';
 import {Route} from 'react-router-dom';
 import {Dialogs} from "./Dialogs";
-import {DialogType, MessageType, PostType} from "../types/types";
+import {StateType} from "../types/types";
 
 type Props = {
-    posts: Array<PostType>
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
+    state:StateType
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Home: React.FC<Props> = ({posts, dialogs, messages}) => {
+export const Home: React.FC<Props> = ({state}) => {
+
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -34,8 +33,8 @@ export const Home: React.FC<Props> = ({posts, dialogs, messages}) => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper elevation={2}>
-                        <Route exact path='/profile' render={() => <Profile posts={posts}/>}/>
-                        <Route path='/dialogs' render={() => <Dialogs messages={messages} dialogs={dialogs}/>}/>
+                        <Route exact path='/profile' render={() => <Profile state={state.profilePage}/>}/>
+                        <Route path='/dialogs' render={() => <Dialogs state={state.messagesPage}/>}/>
                     </Paper>
                 </Grid>
             </Grid>

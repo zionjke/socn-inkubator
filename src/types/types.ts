@@ -15,8 +15,17 @@ export type PostType = {
     message:string
 }
 
+
+export type ProfilePageType = {
+    posts: Array<PostType>
+}
+
+export type MessagesPageType = {
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+}
+
 export type StateType = {
-    posts:Array<PostType>
-    dialogs:Array<DialogType>
-    messages:Array<MessageType>
+    profilePage: ProfilePageType
+    messagesPage:MessagesPageType
 }

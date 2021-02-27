@@ -2,7 +2,7 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import {Home} from "./pages/Home";
-import {DialogType, MessageType, PostType, StateType} from "./types/types";
+import {StateType} from "./types/types";
 
 
 type Props = {
@@ -14,7 +14,7 @@ const App: React.FC<Props> = ({state}) => {
         <div className="App">
             <Switch>
                 <Route path={'/'}
-                       render={() => <Home posts={state.posts} dialogs={state.dialogs} messages={state.messages}/>}/>
+                       render={() => <Home state={state}/>}/>
             </Switch>
         </div>
     );
