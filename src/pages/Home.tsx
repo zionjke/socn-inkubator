@@ -9,6 +9,7 @@ import {StateType} from "../types/types";
 
 type Props = {
     state:StateType
+    addNewPost: (postMessage:string) => void
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Home: React.FC<Props> = ({state}) => {
+export const Home: React.FC<Props> = ({state,addNewPost}) => {
 
     const classes = useStyles();
     return (
@@ -33,7 +34,7 @@ export const Home: React.FC<Props> = ({state}) => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper elevation={2}>
-                        <Route exact path='/profile' render={() => <Profile state={state.profilePage}/>}/>
+                        <Route exact path='/profile' render={() => <Profile addNewPost={addNewPost} state={state.profilePage}/>}/>
                         <Route path='/dialogs' render={() => <Dialogs state={state.messagesPage}/>}/>
                     </Paper>
                 </Grid>

@@ -8,6 +8,7 @@ import { ProfilePageType } from '../types/types';
 
 type Props = {
     state:ProfilePageType
+    addNewPost: (postMessage:string) => void
 };
 
 
@@ -37,13 +38,14 @@ const useStyles = makeStyles((theme) =>
     }),
 );
 
-export const Profile:React.FC<Props> = ({state}) => {
+export const Profile:React.FC<Props> = ({state,addNewPost}) => {
     const {posts} = state
     const classes = useStyles();
+
     return (
         <div className={classes.profile}>
             <ProfileInfo avatarLink={avatarLink}/>
-            <Posts posts={posts}/>
+            <Posts addNewPost={addNewPost} posts={posts}/>
         </div>
     );
 };

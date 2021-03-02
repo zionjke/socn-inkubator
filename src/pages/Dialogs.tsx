@@ -1,4 +1,4 @@
-import {Grid} from '@material-ui/core';
+import {Button, Grid, TextField} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core';
 import * as React from 'react';
 import {Dialog} from "../components/Dialog";
@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
     },
     dialogsUsers: {
         borderRight: '2px solid gray'
+    },
+    messagesActions: {
+        display: 'flex',
+        marginTop: 35,
+        marginLeft: 45
+    },
+    messagesActionsButton: {
+        marginLeft: 35
     }
 }));
 
@@ -50,6 +58,18 @@ export const Dialogs: React.FC<Props> = ({state}) => {
                                      message={m.message}/>
                         ))
                     }
+                    <div className={classes.messagesActions}>
+                        <TextField
+                            id="outlined-basic"
+                            label="Введите сообщение"
+                            variant="standard"/>
+                        <Button
+                            className={classes.messagesActionsButton}
+                            variant="contained"
+                            color="primary">
+                            Отправить
+                        </Button>
+                    </div>
                 </Grid>
             </Grid>
         </div>

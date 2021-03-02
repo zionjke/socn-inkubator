@@ -5,16 +5,18 @@ import {Home} from "./pages/Home";
 import {StateType} from "./types/types";
 
 
+
 type Props = {
-    state: StateType
+    state: StateType,
+    addNewPost: (postMessage:string) => void
 }
 
-const App: React.FC<Props> = ({state}) => {
+const App: React.FC<Props> = ({state,addNewPost}) => {
     return (
         <div className="App">
             <Switch>
                 <Route path={'/'}
-                       render={() => <Home state={state}/>}/>
+                       render={() => <Home addNewPost={addNewPost} state={state}/>}/>
             </Switch>
         </div>
     );
