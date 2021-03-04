@@ -7,7 +7,7 @@ import {ChangeEvent, useState} from "react";
 
 type Props = {
     posts: Array<PostType>
-    addNewPost: (postMessage:string) => void
+    addNewPost: (postMessage: string) => void
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -30,16 +30,18 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Posts: React.FC<Props> = ({posts,addNewPost}) => {
-    const classes = useStyles();
-    const [messageBody, setMessageBody] = useState<string>('')
+export const Posts: React.FC<Props> = ({posts, addNewPost}) => {
 
-    const onSetMessageBody = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setMessageBody(e.currentTarget.value)
-    }
+    const classes = useStyles();
+    const [postMessage, setPostMessage] = useState<string>('')
 
     const onClickAddPost = () => {
-        addNewPost(messageBody)
+        addNewPost(postMessage)
+        setPostMessage('')
+    }
+
+    const onSetPostMessage = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        setPostMessage(e.currentTarget.value)
     }
 
     return (
@@ -48,12 +50,13 @@ export const Posts: React.FC<Props> = ({posts,addNewPost}) => {
                 Мои публикации
             </Typography>
             <div className={classes.form}>
-                <TextField onChange={onSetMessageBody}
-                           value={messageBody}
-                           className={classes.formTextField}
-                           id="outlined-basic"
-                           label="Введите текст"
-                           variant="outlined"/>
+                <TextField
+                    onChange={onSetPostMessage}
+                    value={postMessage}
+                    className={classes.formTextField}
+                    id="outlined-basic"
+                    label="Введите текст"
+                    variant="outlined"/>
                 <Button onClick={onClickAddPost}
                         className={classes.formButton}
                         variant="contained"

@@ -1,4 +1,7 @@
 import {PostType, StateType} from "../types/types";
+import {rerenderEntireTree} from "../render";
+
+
 
 export let state: StateType = {
     profilePage: {
@@ -34,11 +37,15 @@ export let state: StateType = {
     }
 }
 
-export const addNewPost = (postMessage: string) => {
+// @ts-ignore
+window.state = state
+
+export const addNewPost = (postMessage: string ) => {
     let newPost: PostType = {
         id: 3,
         likesCount: 5,
         message: postMessage
     }
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
 }
