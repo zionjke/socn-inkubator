@@ -13,7 +13,7 @@ type Props = {
 
 
 
-export let avatarLink = "https://scontent.fiev6-1.fna.fbcdn.net/v/t1.0-9/19598681_1574642752605734_2353472045273651560_n.jpg?_nc_cat=100&ccb=3&_nc_sid=09cbfe&_nc_ohc=ZHEYebPt-igAX_r3-Wx&_nc_ht=scontent.fiev6-1.fna&oh=f4923d33c176576573a0d22a7c0fc70c&oe=604681B6"
+export let avatarLink = 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png'
 
 const useStyles = makeStyles((theme) =>
     createStyles({

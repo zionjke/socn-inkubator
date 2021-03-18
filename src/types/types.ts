@@ -10,7 +10,7 @@ export type MessageType = {
 }
 
 export type PostType = {
-    id:number
+    id:string
     likesCount:number
     message:string
 }
