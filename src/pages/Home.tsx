@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, makeStyles, Paper} from "@material-ui/core";
+import {Grid, makeStyles, Paper} from "@material-ui/core";
 import {Header} from "../components/Header";
 import {Menu} from "../components/Menu";
 import {Profile} from './Profile';
@@ -8,8 +8,9 @@ import {Dialogs} from "./Dialogs";
 import {StateType} from "../types/types";
 
 type Props = {
-    state:StateType
-    addNewPost: (postMessage:string) => void
+    state: StateType
+    addNewPost: (postMessage: string) => void
+    addNewMessage: (message: string) => void
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const Home: React.FC<Props> = ({state,addNewPost}) => {
+export const Home: React.FC<Props> = ({state, addNewPost,addNewMessage}) => {
 
     const classes = useStyles();
     return (
@@ -34,8 +35,10 @@ export const Home: React.FC<Props> = ({state,addNewPost}) => {
                 </Grid>
                 <Grid item xs={8}>
                     <Paper elevation={2}>
-                        <Route exact path='/profile' render={() => <Profile addNewPost={addNewPost} state={state.profilePage}/>}/>
-                        <Route path='/dialogs' render={() => <Dialogs state={state.messagesPage}/>}/>
+                        <Route exact path='/profile'
+                               render={() => <Profile addNewPost={addNewPost} state={state.profilePage}/>}/>
+                        <Route path='/dialogs'
+                               render={() => <Dialogs addNewMessage={addNewMessage} state={state.messagesPage}/>}/>
                     </Paper>
                 </Grid>
             </Grid>

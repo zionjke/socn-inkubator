@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
 import {Home} from "./pages/Home";
-import {PostType, StateType} from "./types/types";
+import {MessageType, PostType, StateType} from "./types/types";
 import {v1} from 'uuid'
 
 
@@ -35,9 +35,9 @@ const App: React.FC = () => {
                 },
             ],
             messages: [
-                {id: 1, message: 'Hi'},
-                {id: 2, message: 'How are you'},
-                {id: 3, message: 'Im fine'},
+                {id: v1(), message: 'Hi'},
+                {id: v1(), message: 'How are you'},
+                {id: v1(), message: 'Im fine'},
             ]
         }
     })
@@ -57,12 +57,26 @@ const App: React.FC = () => {
         })
     }
 
+    const addNewMessage = (message: string) => {
+        let newMessage: MessageType = {
+            id: v1(),
+            message: message
+        }
+        setState({
+            ...state,
+            messagesPage: {
+                ...state.messagesPage,
+                messages: [...state.messagesPage.messages, newMessage]
+            }
+        })
+    }
+
 
     return (
         <div className="App">
             <Switch>
                 <Route path={'/'}
-                       render={() => <Home addNewPost={addNewPost} state={state}/>}/>
+                       render={() => <Home addNewMessage={addNewMessage} addNewPost={addNewPost} state={state}/>}/>
             </Switch>
         </div>
     );

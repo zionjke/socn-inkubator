@@ -5,7 +5,7 @@ export type DialogType = {
 }
 
 export type MessageType = {
-    id:number
+    id:string
     message:string
 }
 

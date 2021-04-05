@@ -32,7 +32,7 @@ export const Menu:React.FC<Props> = () => {
                 </ListItem>
             </Link>
             <Divider/>
-            <Link to={'/dialogs'}>
+            <Link to={'/dialogs.ts'}>
                 <ListItem onClick={() => setSelectedLink('messages')} selected={selectedLink === 'messages'} button divider>
                     <MessageIcon color='primary' className={classes.menuIcon}/>
                     <ListItemText primary="Сообщения"/>

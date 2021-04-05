@@ -4,14 +4,10 @@ import {Posts} from "../components/Posts/Posts";
 import {ProfileInfo} from "../components/ProfileInfo";
 import { ProfilePageType } from '../types/types';
 
-
-
 type Props = {
     state:ProfilePageType
     addNewPost: (postMessage:string) => void
 };
-
-
 
 export let avatarLink = 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png'
 

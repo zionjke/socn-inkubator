@@ -4,10 +4,12 @@ import * as React from 'react';
 import {Dialog} from "../components/Dialog";
 import {Message} from "../components/Message";
 import {MessagesPageType} from '../types/types';
+import {ChangeEvent, useState} from "react";
 
 
 type Props = {
     state: MessagesPageType
+    addNewMessage: (message: string) => void
 };
 
 
@@ -34,9 +36,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Dialogs: React.FC<Props> = ({state}) => {
+export const Dialogs: React.FC<Props> = ({state, addNewMessage}) => {
+    const [message, setMessage] = useState<string>('')
     const {dialogs, messages} = state
     const classes = useStyles()
+
+    const onChangeMessage = (e: ChangeEvent<HTMLInputElement>) => {
+        setMessage(e.currentTarget.value)
+    }
+
+    const onAddNewMessage = () => {
+        addNewMessage(message)
+        setMessage('')
+    }
+
     return (
         <div className={classes.dialogs}>
             <Grid container spacing={2}>
@@ -60,10 +73,13 @@ export const Dialogs: React.FC<Props> = ({state}) => {
                     }
                     <div className={classes.messagesActions}>
                         <TextField
+                            onChange={onChangeMessage}
+                            value={message}
                             id="outlined-basic"
                             label="Введите сообщение"
                             variant="standard"/>
                         <Button
+                            onClick={onAddNewMessage}
                             className={classes.messagesActionsButton}
                             variant="contained"
                             color="primary">

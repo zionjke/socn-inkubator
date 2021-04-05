@@ -1,9 +1,8 @@
-// @flow
 import * as React from 'react';
 import {Typography} from "@material-ui/core";
 
 type Props = {
-    id:number
+    id:string
     message:string
 };
 
