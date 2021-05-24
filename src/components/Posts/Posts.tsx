@@ -3,12 +3,13 @@ import * as React from 'react';
 import {Post} from "./Post";
 import {PostType} from "../../types/types";
 import {ChangeEvent, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../redux/store";
+import {v1} from "uuid";
+import {addNewPostActionCreator} from "../../redux/reducer/profileReducer";
 
 
-type Props = {
-    posts: Array<PostType>
-    addNewPost: (postMessage: string) => void
-};
+type Props = {};
 
 const useStyles = makeStyles((theme) => ({
     myPosts: {
@@ -30,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Posts: React.FC<Props> = ({posts, addNewPost}) => {
-
+export const Posts: React.FC<Props> = ({}) => {
+    const dispatch = useDispatch()
+    const posts = useSelector((state: AppStateType) => state.profile.posts)
     const classes = useStyles();
     const [postMessage, setPostMessage] = useState<string>('')
 
     const onClickAddPost = () => {
-        addNewPost(postMessage)
+        dispatch(addNewPostActionCreator(postMessage))
         setPostMessage('')
     }
 
