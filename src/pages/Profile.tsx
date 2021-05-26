@@ -2,11 +2,13 @@ import {createStyles, makeStyles} from '@material-ui/core';
 import * as React from 'react';
 import {Posts} from "../components/Posts/Posts";
 import {ProfileInfo} from "../components/ProfileInfo";
-import { ProfilePageType } from '../types/types';
+import {PostType} from "../types/types";
+
 
 
 type Props = {
-
+    posts: Array<PostType>
+    addPost: (text:string) => void
 };
 
 export let avatarLink = 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png'
@@ -34,14 +36,12 @@ const useStyles = makeStyles((theme) =>
     }),
 );
 
-export const Profile:React.FC<Props> = ({}) => {
-
+export const Profile:React.FC<Props> = ({posts,addPost}) => {
     const classes = useStyles();
-
     return (
         <div className={classes.profile}>
             <ProfileInfo avatarLink={avatarLink}/>
-            <Posts />
+            <Posts posts={posts} addPost={addPost} />
         </div>
     );
 };

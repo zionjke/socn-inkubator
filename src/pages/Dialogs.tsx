@@ -3,17 +3,14 @@ import {makeStyles} from '@material-ui/core';
 import * as React from 'react';
 import {Dialog} from "../components/Dialog";
 import {Message} from "../components/Message";
-import {MessagesPageType, MessageType, StateType} from '../types/types';
+import {DialogType, MessageType} from '../types/types';
 import {ChangeEvent, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {v1} from "uuid";
-import {addNewMessageActionCreator} from "../redux/reducer/dialogsReducer";
-import {AppStateType} from "../redux/store";
-
 
 
 type Props = {
-
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
+    addNewMessage: (text:string) => void
 };
 
 
@@ -40,19 +37,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Dialogs: React.FC<Props> = ({}) => {
-    const dispatch = useDispatch()
-    const {dialogs,messages} = useSelector((state:AppStateType) => state.dialog)
-    console.log(dialogs)
-    const [message, setMessage] = useState<string>('')
+export const Dialogs: React.FC<Props> = ({dialogs,messages,addNewMessage}) => {
     const classes = useStyles()
+    const [message, setMessage] = useState<string>('')
 
     const onChangeMessage = (e: ChangeEvent<HTMLInputElement>) => {
         setMessage(e.currentTarget.value)
     }
 
     const onAddNewMessage = () => {
-        dispatch(addNewMessageActionCreator(message))
+        addNewMessage(message)
         setMessage('')
     }
 

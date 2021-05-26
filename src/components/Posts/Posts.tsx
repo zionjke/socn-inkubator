@@ -1,15 +1,13 @@
 import {Button, makeStyles, TextField, Typography} from '@material-ui/core';
 import * as React from 'react';
 import {Post} from "./Post";
-import {PostType} from "../../types/types";
 import {ChangeEvent, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {AppStateType} from "../../redux/store";
-import {v1} from "uuid";
-import {addNewPostActionCreator} from "../../redux/reducer/profileReducer";
+import {PostType} from "../../types/types";
 
-
-type Props = {};
+type Props = {
+    posts: Array<PostType>
+    addPost: (text:string) => void
+};
 
 const useStyles = makeStyles((theme) => ({
     myPosts: {
@@ -31,14 +29,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const Posts: React.FC<Props> = ({}) => {
-    const dispatch = useDispatch()
-    const posts = useSelector((state: AppStateType) => state.profile.posts)
+export const Posts: React.FC<Props> = ({posts,addPost}) => {
     const classes = useStyles();
     const [postMessage, setPostMessage] = useState<string>('')
 
     const onClickAddPost = () => {
-        dispatch(addNewPostActionCreator(postMessage))
+        addPost(postMessage)
         setPostMessage('')
     }
 
