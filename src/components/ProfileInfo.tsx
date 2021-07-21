@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) =>
     }),
 );
 
-export const ProfileInfo = ({avatarLink}: Props) => {
+export const ProfileInfo = React.memo(({avatarLink}: Props) => {
     const classes = useStyles();
     return (
         <div className={classes.profileInfo}>
@@ -37,4 +37,4 @@ export const ProfileInfo = ({avatarLink}: Props) => {
             </div>
         </div>
     );
-};
+})

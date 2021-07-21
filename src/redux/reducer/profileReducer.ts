@@ -13,21 +13,16 @@ const initialState: ProfilePageType = {
 export const profileReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_POST :
-            let newPost: PostType = {
-                id: v1(),
-                likesCount: 5,
-                message: action.payload
-            }
             return {
                 ...state,
-                posts: [...state.posts, newPost]
+                posts: [...state.posts, action.payload]
             }
         default:
             return state
     }
 }
 
-export const addNewPostActionCreator = (payload: string) => {
+export const addNewPostActionCreator = (payload: PostType) => {
     return {
         type: ADD_POST,
         payload

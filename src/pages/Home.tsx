@@ -9,6 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../redux/store";
 import {addNewPostActionCreator} from "../redux/reducer/profileReducer";
 import {addNewMessageActionCreator} from "../redux/reducer/dialogsReducer";
+import {PostType} from "../types/types";
+import {v1} from "uuid";
 
 
 type Props = {
@@ -28,7 +30,12 @@ export const Home: React.FC<Props> = ({}) => {
     const {dialogs,messages} = useSelector((state:AppStateType) => state.dialog)
 
     const addPost = (text:string):void => {
-        dispatch(addNewPostActionCreator(text))
+        let newPost: PostType = {
+            id: v1(),
+            likesCount: 5,
+            message: text
+        }
+        dispatch(addNewPostActionCreator(newPost))
     }
 
     const addNewMessage = (text:string):void => {

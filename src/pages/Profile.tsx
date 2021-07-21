@@ -38,10 +38,11 @@ const useStyles = makeStyles((theme) =>
 
 export const Profile:React.FC<Props> = ({posts,addPost}) => {
     const classes = useStyles();
+    const MemoPosts = React.memo(Posts)
     return (
         <div className={classes.profile}>
             <ProfileInfo avatarLink={avatarLink}/>
-            <Posts posts={posts} addPost={addPost} />
+            <MemoPosts posts={posts} addPost={addPost} />
         </div>
     );
 };
